@@ -15,7 +15,6 @@ class GUI:
 
         #Sets up window
         root = tk.Tk()
-        singleplayer =tk.BooleanVar() #Use computer player or not
         root.geometry("400x550")
         root.title("Noughts and Crosses Gui")
         icon = tk.PhotoImage(file="./icon.png")
@@ -25,9 +24,10 @@ class GUI:
         title_.pack(pady=5)
 
         #Options
+        use_computer =tk.BooleanVa#Use computer player or not
         note=tk.Label(root, text="First Player is X, If in Singleplayer you always play first", font=("arial", 10))
         note.pack(pady=5)
-        player2=tk.Checkbutton(root, text="Singleplayer", font=("arial", 10), variable=singleplayer)
+        player2=tk.Checkbutton(root, text="Singleplayer", font=("arial", 10), variable=use_computer)
         player2.pack(pady=5)
         
 
@@ -75,6 +75,7 @@ class GUI:
         root.mainloop()
     
     
+
     
     def reset(self, text0, text1, text2, text3, text4, text5, text6, text7, text8):    #resets grid
         globals()["states"] = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
@@ -151,5 +152,5 @@ class computer_player:
         global turns 
         global states
 
-        
+
 
