@@ -24,7 +24,7 @@ class GUI:
         title_.pack(pady=5)
 
         #Options
-        use_computer =tk.BooleanVa#Use computer player or not
+        use_computer =tk.BooleanVar#Use computer player or not
         note=tk.Label(root, text="First Player is X, If in Singleplayer you always play first", font=("arial", 10))
         note.pack(pady=5)
         player2=tk.Checkbutton(root, text="Singleplayer", font=("arial", 10), variable=use_computer)
@@ -76,8 +76,8 @@ class GUI:
     
     
 
-    
-    def reset(self, text0, text1, text2, text3, text4, text5, text6, text7, text8):    #resets grid
+    ################## Resets Grid #################
+    def reset(self, text0, text1, text2, text3, text4, text5, text6, text7, text8):    
         globals()["states"] = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
         globals()["turns"] = 1
         text0.set(" ")
@@ -90,6 +90,7 @@ class GUI:
         text7.set(" ")
         text8.set(" ")
     
+    ############### Tracks Os And Xs in states and on gui ##############
     def press(self, button, text):
         if (turns % 2) == 0:
             globals()["states"][button]= "O"
@@ -99,7 +100,7 @@ class GUI:
             text.set("X")
         globals()["turns"] += 1
 
-########### Checks for winner each turn##########
+########### Checks for winner each turn ##########
         if states[0] == "X" and states[1] =="X" and states[2] == "X":
             messagebox.showinfo(title="Winner!", message="Player X Wins!")
         elif states[0] == "O" and states[1] =="O" and states[2] == "O":
@@ -152,5 +153,7 @@ class computer_player:
         global turns 
         global states
 
-
+        corners = states[0, 2, 6, 8]
+        center = states[4]
+        middles = [1, 3, 5, 7]
 
