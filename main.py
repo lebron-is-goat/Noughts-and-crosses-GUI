@@ -8,14 +8,14 @@ states = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
 texts = [...]
 
-class GUI:
+class Gui:
     def __init__(self):
         
         global turns, states, computer_first
 
         #Sets up window
         root = tk.Tk()
-        root.geometry("400x550")
+        root.geometry("400x475")
         root.title("Noughts and Crosses Gui")
         icon = tk.PhotoImage(file="./icon.png")
         root.iconphoto(False, icon)
@@ -84,7 +84,7 @@ class GUI:
 
     def use_computer_player(self):
          if self.use_computer.get() == True:
-            computer_player()
+            ComputerPlayer()
     def first_player(self):
         if self.computer_first.get() == True:
             globals()["computer_first"] = True
@@ -105,11 +105,11 @@ class GUI:
         
         def o_wins():
             messagebox.showinfo(title="Winner!", message="Player O Wins!")
-            GUI.reset(self)
+            Gui.reset(self)
 
         def x_wins():
             messagebox.showinfo(title="Winner!", message="Player X Wins!")
-            GUI.reset(self)
+            Gui.reset(self)
         if states[0] == "X" and states[1] =="X" and states[2] == "X":
             x_wins()
         elif states[0] == "O" and states[1] =="O" and states[2] == "O":
@@ -152,7 +152,7 @@ class GUI:
         
         elif " " not in states:
             messagebox.showinfo(title="Draw!", message="Its A Draw!")
-            GUI.reset(self)
+            Gui.reset(self)
         
         
     
@@ -167,10 +167,10 @@ class GUI:
             texts[button].set("X")
         globals()["turns"] += 1
         if turns >= 6:
-            GUI.check_winner(self)
+            Gui.check_winner(self)
 
 
-class computer_player():
+class ComputerPlayer():
     def __init__(self):
 
         global turns, states, computer_first, texts
@@ -185,7 +185,7 @@ class computer_player():
 
         
     def computer_press(self, button):
-        GUI.press(self, button)
+        Gui.press(self, button)
 
             
 
@@ -197,5 +197,5 @@ class computer_player():
 
 
 
-GUI()
+Gui()
 
