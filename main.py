@@ -6,7 +6,7 @@ computer_first = ...
 #States of all the squares in the grid
 states = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
-texts = [...]
+texts = [None]
 
 class Gui:
     def __init__(self):
@@ -168,22 +168,30 @@ class Gui:
         globals()["turns"] += 1
         if turns >= 6:
             Gui.check_winner(self)
-
+        print(turns)
+        if self.computer_player == True and (turns % 2) == 0:
+            ComputerPlayer()
 
 class ComputerPlayer():
     def __init__(self):
-
+        from time import sleep
         global turns, states, computer_first, texts
         
-        corners =[0, 2, 6, 8]
+        corners = [[0, 8], [2, 6]]
         center = [4]
-        middles = [1, 3, 5, 7]
+        edges = [1, 3, 5, 7]
 
         if computer_first == True:
-            move1_number = int(corners[random.randint(0,3)])
-            self.computer_press(move1_number)
+            seed1 = random.randint(0,1)
+            seed2 = random.randint(0,1)
+            pair = corners[seed1]
+            corner1 = pair[seed2]
+            self.computer_press(corner1)
+            while states == 3: 
+                if states[4] == "O":
+                    print("hi")
+                
 
-        
     def computer_press(self, button):
         Gui.press(self, button)
 
